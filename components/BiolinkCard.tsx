@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Github, MessageCircle, MapPin, Rocket, Zap } from 'lucide-react'
+import Image from 'next/image'
 
 // Simulated Discord presence data
 const simulatedDiscordPresence = {
@@ -86,10 +87,12 @@ export default function BiolinkCard() {
               onMouseEnter={() => setIsPfpHovered(true)}
               onMouseLeave={() => setIsPfpHovered(false)}
             >
-              <img
+              <Image
                 src="/placeholder.svg?height=80&width=80"
                 alt="Profile"
-                className="w-20 h-20 rounded-full border-2 border-blue-400 animate-pulse"
+                width={80}
+                height={80}
+                className="rounded-full border-2 border-blue-400 animate-pulse"
               />
               <div 
                 className={`absolute -top-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-2 border-black ${
@@ -119,10 +122,12 @@ export default function BiolinkCard() {
           {/* Simulated Discord Presence */}
           <div className="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-6 hover:bg-opacity-70 transition-all duration-300 group">
             <div className="flex items-center space-x-3">
-              <img
+              <Image
                 src={discordPresence.avatar_url}
                 alt="Discord Avatar"
-                className="w-10 h-10 rounded-full group-hover:animate-spin"
+                width={40}
+                height={40}
+                className="rounded-full group-hover:animate-spin"
               />
               <div>
                 <p className="text-sm text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">{discordPresence.username}</p>
