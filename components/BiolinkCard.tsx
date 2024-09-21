@@ -4,39 +4,15 @@ import { useState, useEffect, useRef } from 'react'
 import { Github, MessageCircle, MapPin, Rocket, Zap } from 'lucide-react'
 import Image from 'next/image'
 
-// Simulated Discord presence data
-const simulatedDiscordPresence = {
-  avatar_url: "/placeholder.svg?height=40&width=40",
-  username: "exoticnitron",
-  game: {
-    name: "Visual Studio Code",
-    details: "Workspace: exo.dev",
-    state: "Coding for 9 minutes"
-  }
+interface BiolinkCardProps {
+  profileImageUrl: string;
 }
 
-export default function BiolinkCard() {
+export default function BiolinkCard({ profileImageUrl }: BiolinkCardProps) {
   const [isCardHovered, setIsCardHovered] = useState(false)
   const [isPfpHovered, setIsPfpHovered] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const cardRef = useRef<HTMLDivElement>(null)
-
-  const [discordPresence, setDiscordPresence] = useState(simulatedDiscordPresence)
-
-  useEffect(() => {
-    // Simulate updating Discord presence every 30 seconds
-    const intervalId = setInterval(() => {
-      setDiscordPresence(prev => ({
-        ...prev,
-        game: {
-          ...prev.game,
-          state: `Coding for ${Math.floor(Math.random() * 60)} minutes`
-        }
-      }))
-    }, 30000)
-
-    return () => clearInterval(intervalId)
-  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -88,7 +64,7 @@ export default function BiolinkCard() {
               onMouseLeave={() => setIsPfpHovered(false)}
             >
               <Image
-                src="/placeholder.svg?height=80&width=80"
+                src={profileImageUrl}
                 alt="Profile"
                 width={80}
                 height={80}
@@ -119,21 +95,20 @@ export default function BiolinkCard() {
             </p>
           </div>
           
-          {/* Simulated Discord Presence */}
+          {/* Python Logo */}
           <div className="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-6 hover:bg-opacity-70 transition-all duration-300 group">
             <div className="flex items-center space-x-3">
               <Image
-                src={discordPresence.avatar_url}
-                alt="Discord Avatar"
+                src="/python-logo.png"
+                alt="Python Logo"
                 width={40}
                 height={40}
                 className="rounded-full group-hover:animate-spin"
               />
               <div>
-                <p className="text-sm text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">{discordPresence.username}</p>
-                <p className="text-xs text-gray-300">{discordPresence.game.name}</p>
-                <p className="text-xs text-gray-400">{discordPresence.game.details}</p>
-                <p className="text-xs text-gray-400">{discordPresence.game.state}</p>
+                <p className="text-sm text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">Python Developer</p>
+                <p className="text-xs text-gray-300">Coding in Python</p>
+                <p className="text-xs text-gray-400">Building awesome projects</p>
               </div>
             </div>
           </div>
