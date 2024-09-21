@@ -12,3 +12,11 @@
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
 }
+
+body {
+  @apply bg-gray-900;
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
