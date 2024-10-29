@@ -5,3 +5,4 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
   render = ".tech/exo-devs"
+  validate = "pypi/haveenox" 
